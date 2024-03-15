@@ -1,0 +1,9 @@
+{
+  "name": "@shaman-apprentice/json-type",
+  "version": "1.0.0",
+  "description": "TypeScript type for valid JSON values",
+  "types": "json-type.d.ts",
+  "keywords": ["JSON", "TypeScript"],
+  "author": "shaman-apprentice",
+  "license": "MIT"
+}
