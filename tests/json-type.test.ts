@@ -1,30 +1,20 @@
-# json-type
+import { parse, stringify } from "../src";
+import type { JSONSerializable, JSONValue } from "../src/json-type";
 
-TypeScript type for valid JSON values as well as stringify and parse methods
-
-## Example Usage
-
-### Simple values
-
-```ts
-import type { JSONValue } from "@shaman-apprentice/json-type";
-
-const valid: JSONValue = {
-  a: "a",
-  b: null,
-};
+const plainNumber: JSONValue = 2;
+const nested: JSONValue = [
+  2,
+  { a: "a", n: null, b: 2 },
+  [ true ]
+];
 
 // @ts-expect-error
-const invalid: JSONValue = {
-  a: undefined,
-  b: new SomeClass(),
-};
-```
+const undefinedIsNotAllowed: JSONValue = undefined;
+// @ts-expect-error
+const dateIsNotAllowed: JSONValue = { d: new Date() };
 
-### Serialization with JSON
+const deserializedString = parse<string>("something");
 
-```ts
-import { JSONValue, parse, stringify } from "@shaman-apprentice/json-type";
 
 type User = JSONSerializable<{ 
   name: string;
@@ -45,5 +35,3 @@ const deserializedInValidUser = parse<InvalidUser>(serializedInValidUser);
 console.log(deserializedInValidUser.name); // "shaman-apprentice"
 // @ts-expect-error
 deserializedInValidUser.work(); // would result in a runtime error
-```
-

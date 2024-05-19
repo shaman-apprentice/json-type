@@ -1,9 +1,11 @@
 {
   "name": "@shaman-apprentice/json-type",
-  "version": "1.0.0",
-  "description": "TypeScript type for valid JSON values",
-  "types": "json-type.d.ts",
-  "keywords": ["JSON", "TypeScript"],
+  "version": "1.1.0",
+  "description": "TypeScript type for valid JSON values as well as stringify and parse methods",
+  "types": "dist/types",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "keywords": [ "JSON", "TypeScript", "stringify", "type safety"],
   "author": "shaman-apprentice",
   "license": "MIT",
   "homepage": "https://github.com/shaman-apprentice/json-type",
@@ -11,5 +13,16 @@
     "type": "git",
     "url": "https://github.com/shaman-apprentice/json-type.git"
   },
-  "private": false
+  "scripts": {
+    "build": "npm run rmDist && npm run tsc",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run test",
+    "rmDist": "node -e \"require('fs').rmSync('dist', { recursive: true });\"",
+    "test": "tsc tests/json-type.test.ts --strict --noEmit",
+    "tsc": "tsc -b tsconfig.json tsconfig.cjs.json"
+  },
+  "private": false,
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
 }
