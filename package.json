@@ -1,6 +1,6 @@
 {
   "name": "@shaman-apprentice/json-type",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "TypeScript type for valid JSON values as well as stringify and parse methods",
   "types": "dist/types",
   "main": "dist/cjs/index.js",
