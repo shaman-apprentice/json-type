@@ -7,6 +7,7 @@ const nested: JSONValue = [
   { a: "a", n: null, b: 2 },
   [ true ]
 ];
+const empty:JSONValue = {};
 
 // @ts-expect-error
 const undefinedIsNotAllowed: JSONValue = undefined;
@@ -18,11 +19,13 @@ const deserializedString = parse<string>("something");
 
 type User = JSONSerializable<{ 
   name: string;
+  socialMedia: string | undefined;
 }> // same as `type User = { name: string }`
-const user: User = { name: "shaman-apprentice" };
+const user: User = { name: "shaman-apprentice", socialMedia: undefined };
 const serializedUser: string = stringify(user);
 const deserializedUser = parse<User>(serializedUser);
 console.log(deserializedUser.name); // "shaman-apprentice"
+console.log(deserializedUser.socialMedia); // undefined
 
 type InvalidUser = JSONSerializable<User & { 
   work: () => number;

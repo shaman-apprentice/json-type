@@ -4,6 +4,12 @@ This changelog is roughly based on [Keep a Changelog](http://keepachangelog.com/
 
 ## [unreleased] (Feat 🚀 | Fixed 🐞 | Breaking 🐱)
 
+## [1.1.1] 2024-05-26
+
+## Fixed 🐞
+
+- Allow `undefined` in objects to be `JSONSerializable`, as they can correctly be serialized with `JSON.parse(JSON.stringify(data))`.
+
 ## [1.1.0] 2024-05-19
 
 ### Feat 🚀
